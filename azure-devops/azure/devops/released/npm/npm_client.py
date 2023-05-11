@@ -50,10 +50,7 @@ class NpmClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_content_unscoped_package(self, feed_id, package_name, package_version, project=None, **kwargs):
@@ -79,10 +76,7 @@ class NpmClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_packages(self, batch_request, feed_id, project=None):
@@ -130,10 +124,7 @@ class NpmClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_readme_unscoped_package(self, feed_id, package_name, package_version, project=None, **kwargs):
@@ -159,10 +150,7 @@ class NpmClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_recycle_bin_packages(self, batch_request, feed_id, project=None):

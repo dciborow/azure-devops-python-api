@@ -126,10 +126,7 @@ class ReleaseClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_release_task_attachments(self, project, release_id, environment_id, attempt_id, plan_id, type):
@@ -517,10 +514,7 @@ class ReleaseClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_task_log(self, project, release_id, environment_id, release_deploy_phase_id, task_id, start_line=None, end_line=None, **kwargs):
@@ -557,10 +551,7 @@ class ReleaseClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_manual_intervention(self, project, release_id, manual_intervention_id):
@@ -782,10 +773,7 @@ class ReleaseClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_release(self, release, project, release_id):
@@ -850,10 +838,7 @@ class ReleaseClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_release_definition_history(self, project, definition_id):

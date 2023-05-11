@@ -75,10 +75,7 @@ class WorkItemTrackingProcessTemplateClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def import_process_template(self, upload_stream, ignore_warnings=None, replace_existing_template=None, **kwargs):
@@ -89,17 +86,13 @@ class WorkItemTrackingProcessTemplateClient(Client):
         :param bool replace_existing_template: Replaces the existing template. Default value is true.
         :rtype: :class:`<ProcessImportResult> <azure.devops.v7_0.work_item_tracking_process_template.models.ProcessImportResult>`
         """
-        route_values = {}
-        route_values['action'] = 'Import'
+        route_values = {'action': 'Import'}
         query_parameters = {}
         if ignore_warnings is not None:
             query_parameters['ignoreWarnings'] = self._serialize.query('ignore_warnings', ignore_warnings, 'bool')
         if replace_existing_template is not None:
             query_parameters['replaceExistingTemplate'] = self._serialize.query('replace_existing_template', replace_existing_template, 'bool')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='29e1f38d-9e9c-4358-86a5-cdf9896a5759',

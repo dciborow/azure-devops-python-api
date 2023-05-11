@@ -13,5 +13,5 @@ class ClientConfiguration(Configuration):
             raise ValueError('base_url is required.')
         base_url = base_url.rstrip('/')
         super(ClientConfiguration, self).__init__(base_url)
-        self.add_user_agent('azure-devops/{}'.format(VERSION))
+        self.add_user_agent(f'azure-devops/{VERSION}')
         self.additional_headers = {}

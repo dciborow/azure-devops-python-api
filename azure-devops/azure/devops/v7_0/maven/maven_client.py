@@ -54,10 +54,7 @@ class MavenClient(Client):
                               version='7.0-preview.1',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_package_versions(self, batch_request, feed_id, project=None):

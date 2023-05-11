@@ -101,10 +101,7 @@ class TestClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_test_result_attachments(self, project, run_id, test_case_result_id):
@@ -151,10 +148,7 @@ class TestClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_test_sub_result_attachment_content(self, project, run_id, test_case_result_id, attachment_id, test_sub_result_id, **kwargs):
@@ -185,10 +179,7 @@ class TestClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_test_sub_result_attachments(self, project, run_id, test_case_result_id, test_sub_result_id):
@@ -245,10 +236,7 @@ class TestClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def create_test_run_attachment(self, attachment_request_model, project, run_id):
@@ -292,10 +280,7 @@ class TestClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_test_run_attachments(self, project, run_id):
@@ -336,10 +321,7 @@ class TestClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_build_code_coverage(self, project, build_id, flags):
@@ -926,11 +908,7 @@ class TestClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -962,11 +940,7 @@ class TestClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1004,11 +978,7 @@ class TestClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')

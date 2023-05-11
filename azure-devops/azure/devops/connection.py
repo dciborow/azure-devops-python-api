@@ -66,26 +66,25 @@ class Connection(object):
         resource_id = client_class.resource_area_identifier
         if resource_id is None:
             return self.base_url
-        else:
-            resource_areas = self._get_resource_areas()
-            if resource_areas is None:
-                raise AzureDevOpsClientRequestError(('Failed to retrieve resource areas '
-                                                     + 'from server: {url}').format(url=self.base_url))
-            if not resource_areas:
-                # For OnPrem environments we get an empty list.
-                return self.base_url
-            for resource_area in resource_areas:
-                if resource_area.id.lower() == resource_id.lower():
-                    return resource_area.location_url
-
-            # Check SPS deployment level for the resource area
-            resource_area = self._get_deployment_resource_area_from_sps(resource_id)
-            if resource_area is not None:
+        resource_areas = self._get_resource_areas()
+        if resource_areas is None:
+            raise AzureDevOpsClientRequestError(('Failed to retrieve resource areas '
+                                                 + 'from server: {url}').format(url=self.base_url))
+        if not resource_areas:
+            # For OnPrem environments we get an empty list.
+            return self.base_url
+        for resource_area in resource_areas:
+            if resource_area.id.lower() == resource_id.lower():
                 return resource_area.location_url
 
-            raise AzureDevOpsClientRequestError(('Could not find information for resource area {id} '
-                                                 + 'from server: {url}').format(id=resource_id,
-                                                                                url=self.base_url))
+        # Check SPS deployment level for the resource area
+        resource_area = self._get_deployment_resource_area_from_sps(resource_id)
+        if resource_area is not None:
+            return resource_area.location_url
+
+        raise AzureDevOpsClientRequestError(('Could not find information for resource area {id} '
+                                             + 'from server: {url}').format(id=resource_id,
+                                                                            url=self.base_url))
 
     def _get_deployment_resource_area_from_sps(self, resource_id):
         resource_id = resource_id.lower()
@@ -106,17 +105,18 @@ class Connection(object):
             location_client = LocationClient(self.base_url, self._creds)
             if self.use_fiddler:
                 self._configure_client_for_fiddler(location_client)
-            if not force and RESOURCE_FILE_CACHE[location_client.normalized_url]:
-                try:
-                    logger.debug('File cache hit for resources on: %s', location_client.normalized_url)
-                    self._resource_areas = location_client._base_deserialize.deserialize_data(
-                        RESOURCE_FILE_CACHE[location_client.normalized_url],
-                        '[ResourceAreaInfo]')
-                    return self._resource_areas
-                except Exception as ex:
-                    logger.debug(ex, exc_info=True)
-            elif not force:
-                logger.debug('File cache miss for resources on: %s', location_client.normalized_url)
+            if not force:
+                if RESOURCE_FILE_CACHE[location_client.normalized_url]:
+                    try:
+                        logger.debug('File cache hit for resources on: %s', location_client.normalized_url)
+                        self._resource_areas = location_client._base_deserialize.deserialize_data(
+                            RESOURCE_FILE_CACHE[location_client.normalized_url],
+                            '[ResourceAreaInfo]')
+                        return self._resource_areas
+                    except Exception as ex:
+                        logger.debug(ex, exc_info=True)
+                else:
+                    logger.debug('File cache miss for resources on: %s', location_client.normalized_url)
             self._resource_areas = location_client.get_resource_areas()
             if self._resource_areas is None:
                 # For OnPrem environments we get an empty collection wrapper.

@@ -38,11 +38,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -68,11 +64,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -100,11 +92,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -131,11 +119,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -177,11 +161,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -229,11 +209,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -260,11 +236,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -291,11 +263,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -325,11 +293,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -358,11 +322,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -392,11 +352,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -425,11 +381,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -460,11 +412,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -496,11 +444,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -532,11 +476,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -565,11 +505,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -598,11 +534,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -629,11 +561,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -662,11 +590,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -695,11 +619,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -726,11 +646,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -759,11 +675,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -823,11 +735,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -857,11 +765,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -891,11 +795,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -944,11 +844,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -975,11 +871,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1007,11 +899,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1041,11 +929,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1176,11 +1060,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1209,11 +1089,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1241,11 +1117,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1270,11 +1142,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1301,11 +1169,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1333,11 +1197,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1368,11 +1228,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1401,11 +1257,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1434,11 +1286,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1464,11 +1312,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1495,11 +1339,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1525,11 +1365,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1557,11 +1393,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1589,11 +1421,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1622,11 +1450,7 @@ class WorkClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')

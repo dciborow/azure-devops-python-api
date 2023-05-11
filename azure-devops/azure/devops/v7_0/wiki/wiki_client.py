@@ -50,10 +50,7 @@ class WikiClient(Client):
                 query_parameters['versionDescriptor.version'] = version_descriptor.version
             if version_descriptor.version_options is not None:
                 query_parameters['versionDescriptor.versionOptions'] = version_descriptor.version_options
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='c4382d8d-fefc-40e0-92c5-49852e9e17c0',
@@ -262,10 +259,7 @@ class WikiClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_page_zip(self, project, wiki_identifier, path=None, recursion_level=None, version_descriptor=None, include_content=None, **kwargs):
@@ -304,10 +298,7 @@ class WikiClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def delete_page_by_id(self, project, wiki_identifier, id, comment=None):
@@ -399,10 +390,7 @@ class WikiClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_page_by_id_zip(self, project, wiki_identifier, id, recursion_level=None, include_content=None, **kwargs):
@@ -433,10 +421,7 @@ class WikiClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_page_by_id(self, parameters, project, wiki_identifier, id, version, comment=None):
