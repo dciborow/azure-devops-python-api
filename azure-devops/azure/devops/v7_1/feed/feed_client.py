@@ -45,10 +45,7 @@ class FeedClient(Client):
                               version='7.1-preview.1',
                               route_values=route_values,
                               accept_media_type='image/svg+xml')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_feed_change(self, feed_id, project=None):

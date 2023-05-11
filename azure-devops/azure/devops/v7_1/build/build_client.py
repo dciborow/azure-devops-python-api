@@ -91,10 +91,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_artifacts(self, project, build_id):
@@ -143,10 +140,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_attachments(self, project, build_id, type):
@@ -199,10 +193,7 @@ class BuildClient(Client):
                               version='7.1-preview.2',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def authorize_project_resources(self, resources, project):
@@ -796,10 +787,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def create_folder(self, folder, project, path):
@@ -1192,10 +1180,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_build_log_lines(self, project, build_id, log_id, start_line=None, end_line=None):
@@ -1262,10 +1247,7 @@ class BuildClient(Client):
                               version='7.1-preview.2',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_build_log_zip(self, project, build_id, log_id, start_line=None, end_line=None, **kwargs):
@@ -1296,10 +1278,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_project_metrics(self, project, metric_aggregation_type=None, min_metrics_time=None):
@@ -1561,10 +1540,7 @@ class BuildClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/html')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def list_repositories(self, project, provider_name, service_endpoint_id=None, repository=None, result_set=None, page_results=None, continuation_token=None):

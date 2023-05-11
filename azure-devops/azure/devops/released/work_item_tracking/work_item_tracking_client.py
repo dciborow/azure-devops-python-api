@@ -83,10 +83,7 @@ class WorkItemTrackingClient(Client):
             query_parameters['uploadType'] = self._serialize.query('upload_type', upload_type, 'str')
         if area_path is not None:
             query_parameters['areaPath'] = self._serialize.query('area_path', area_path, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='e07b5fa4-1499-494d-a496-64b860fd64ff',
@@ -122,10 +119,7 @@ class WorkItemTrackingClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_attachment_zip(self, id, project=None, file_name=None, download=None, **kwargs):
@@ -153,10 +147,7 @@ class WorkItemTrackingClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_classification_nodes(self, project, ids, depth=None, error_policy=None):
@@ -830,11 +821,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -862,11 +849,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -895,11 +878,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -926,11 +905,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -959,11 +934,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1042,11 +1013,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1082,11 +1049,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1122,11 +1085,7 @@ class WorkItemTrackingClient(Client):
                 project = team_context.project_id
             else:
                 project = team_context.project
-            if team_context.team_id:
-                team = team_context.team_id
-            else:
-                team = team_context.team
-
+            team = team_context.team_id if team_context.team_id else team_context.team
         route_values = {}
         if project is not None:
             route_values['project'] = self._serialize.url('project', project, 'string')
@@ -1201,10 +1160,7 @@ class WorkItemTrackingClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='image/svg+xml')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_work_item_icon_xaml(self, icon, color=None, v=None, **kwargs):
@@ -1229,10 +1185,7 @@ class WorkItemTrackingClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='image/xaml+xml')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_reporting_links_by_link_type(self, project=None, link_types=None, types=None, continuation_token=None, start_date_time=None):

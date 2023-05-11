@@ -54,8 +54,8 @@ class Client(object):
         :param config: Any specific config overrides
         """
         if (TRACE_ENV_VAR in os.environ and os.environ[TRACE_ENV_VAR] == 'true')\
-                or (TRACE_ENV_VAR_COMPAT in os.environ and os.environ[TRACE_ENV_VAR_COMPAT] == 'true'):
-            print(request.method + ' ' + request.url)
+                    or (TRACE_ENV_VAR_COMPAT in os.environ and os.environ[TRACE_ENV_VAR_COMPAT] == 'true'):
+            print(f'{request.method} {request.url}')
         logger.debug('%s %s', request.method, request.url)
         if media_type is not None and media_type == 'application/json':
             logger.debug('Request content: %s', content)
@@ -87,8 +87,10 @@ class Client(object):
             logger.debug("Api version '%s'", negotiated_version)
 
         # Construct headers
-        headers = {'Content-Type': media_type + '; charset=utf-8',
-                   'Accept': accept_media_type + ';api-version=' + negotiated_version}
+        headers = {
+            'Content-Type': f'{media_type}; charset=utf-8',
+            'Accept': f'{accept_media_type};api-version={negotiated_version}',
+        }
         if additional_headers is not None:
             for key in additional_headers:
                 headers[key] = str(additional_headers[key])
@@ -111,8 +113,7 @@ class Client(object):
             wrapper = self._base_deserialize.deserialize_data(response.json(), 'VssJsonCollectionWrapper')
         else:
             wrapper = self._base_deserialize('VssJsonCollectionWrapper', response)
-        collection = wrapper.value
-        return collection
+        return wrapper.value
 
     def _create_request_message(self, http_method, location_id, route_values=None,
                                 query_parameters=None):
@@ -120,15 +121,18 @@ class Client(object):
         deployment_level = False
         deployment_url = None
         if location is None:
-            logger.debug('API resource location ' + location_id + ' is not registered on ' + self.config.base_url + '.')
+            logger.debug(
+                f'API resource location {location_id} is not registered on {self.config.base_url}.'
+            )
             deployment_url = self._get_deployment_url()
             if deployment_url is not None:
-                logger.debug('Checking for location at deployment level: ' + deployment_url)
+                logger.debug(f'Checking for location at deployment level: {deployment_url}')
                 location = self._get_resource_location(deployment_url, location_id)
                 deployment_level = True
-            if location is None:
-                raise ValueError('API resource location ' + location_id + ' is not registered on '
-                                 + self.config.base_url + '.')
+        if location is None:
+            raise ValueError(
+                f'API resource location {location_id} is not registered on {self.config.base_url}.'
+            )
         if route_values is None:
             route_values = {}
         route_values['area'] = location.area
@@ -150,10 +154,13 @@ class Client(object):
         new_template = ''
         route_template = route_template.replace('{*', '{')
         for path_segment in route_template.split('/'):
-            if (len(path_segment) <= 2 or not path_segment[0] == '{'
-                    or not path_segment[len(path_segment) - 1] == '}'
-                    or path_segment[1:len(path_segment) - 1] in route_values):
-                new_template = new_template + '/' + path_segment
+            if (
+                len(path_segment) <= 2
+                or path_segment[0] != '{'
+                or path_segment[len(path_segment) - 1] != '}'
+                or path_segment[1:-1] in route_values
+            ):
+                new_template = f'{new_template}/{path_segment}'
         return new_template
 
     def _get_organization_resource_location(self, location_id):
@@ -208,7 +215,9 @@ class Client(object):
         response = self._send_request(request, headers=headers)
         wrapper = self._base_deserialize('VssJsonCollectionWrapper', response)
         if wrapper is None:
-            raise AzureDevOpsClientRequestError("Failed to retrieve resource locations from: {}".format(options_uri))
+            raise AzureDevOpsClientRequestError(
+                f"Failed to retrieve resource locations from: {options_uri}"
+            )
         collection = wrapper.value
         returned_locations = self._base_deserialize('[ApiResourceLocation]',
                                                     collection)
@@ -228,7 +237,7 @@ class Client(object):
             return version
         pattern = r'(\d+(\.\d)?)(-preview(.(\d+))?)?'
         match = re.match(pattern, version)
-        requested_api_version = match.group(1)
+        requested_api_version = match[1]
         if requested_api_version is not None:
             requested_api_version = float(requested_api_version)
         if location.min_version > requested_api_version:
@@ -245,15 +254,15 @@ class Client(object):
         else:
             # We can send at the requested api version. Make sure the resource version
             # is not bigger than what the server supports
-            negotiated_version = match.group(1)
-            is_preview = match.group(3) is not None
+            negotiated_version = match[1]
+            is_preview = match[3] is not None
             if is_preview:
                 negotiated_version += '-preview'
-                if match.group(5) is not None:
-                    if location.resource_version < int(match.group(5)):
-                        negotiated_version += '.' + str(location.resource_version)
+                if match[5] is not None:
+                    if location.resource_version < int(match[5]):
+                        negotiated_version += f'.{str(location.resource_version)}'
                     else:
-                        negotiated_version += '.' + match.group(5)
+                        negotiated_version += f'.{match[5]}'
             return negotiated_version
 
     @staticmethod
@@ -266,17 +275,19 @@ class Client(object):
         if content_type is None or content_type.find('text/plain') < 0:
             try:
                 wrapped_exception = self._base_deserialize('WrappedException', response)
-                if wrapped_exception is not None and wrapped_exception.message is not None:
+                if (
+                    wrapped_exception is not None
+                    and wrapped_exception.message is not None
+                ):
                     raise AzureDevOpsServiceError(wrapped_exception)
-                else:
-                    # System exceptions from controllers are not returning wrapped exceptions.
-                    # Following code is to handle this unusual exception json case.
-                    # TODO: dig into this.
-                    collection_wrapper = self._base_deserialize('VssJsonCollectionWrapper', response)
-                    if collection_wrapper is not None and collection_wrapper.value is not None:
-                        wrapped_exception = self._base_deserialize('ImproperException', collection_wrapper.value)
-                        if wrapped_exception is not None and wrapped_exception.message is not None:
-                            raise AzureDevOpsClientRequestError(wrapped_exception.message)
+                # System exceptions from controllers are not returning wrapped exceptions.
+                # Following code is to handle this unusual exception json case.
+                # TODO: dig into this.
+                collection_wrapper = self._base_deserialize('VssJsonCollectionWrapper', response)
+                if collection_wrapper is not None and collection_wrapper.value is not None:
+                    wrapped_exception = self._base_deserialize('ImproperException', collection_wrapper.value)
+                    if wrapped_exception is not None and wrapped_exception.message is not None:
+                        raise AzureDevOpsClientRequestError(wrapped_exception.message)
                 # if we get here we still have not raised an exception, try to deserialize as a System Exception
                 system_exception = self._base_deserialize('SystemException', response)
                 if system_exception is not None and system_exception.message is not None:

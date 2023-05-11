@@ -75,10 +75,7 @@ class TaskClient(Client):
             route_values['type'] = self._serialize.url('type', type, 'str')
         if name is not None:
             route_values['name'] = self._serialize.url('name', name, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='7898f959-9cdf-4096-b29e-7f293031629e',
@@ -191,10 +188,7 @@ class TaskClient(Client):
                               version='7.0',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_attachments(self, scope_identifier, hub_name, plan_id, timeline_id, record_id, type):
@@ -244,10 +238,7 @@ class TaskClient(Client):
             route_values['planId'] = self._serialize.url('plan_id', plan_id, 'str')
         if log_id is not None:
             route_values['logId'] = self._serialize.url('log_id', log_id, 'int')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='46f5667d-263a-4684-91b1-dff7fdcf64e2',

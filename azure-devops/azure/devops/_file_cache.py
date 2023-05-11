@@ -74,10 +74,10 @@ class FileCache(collections.MutableMapping):
 
     def clear(self):
         if os.path.isfile(self.file_name):
-            logger.info("Deleting file: " + self.file_name)
+            logger.info(f"Deleting file: {self.file_name}")
             os.remove(self.file_name)
         else:
-            logger.info("File does not exist: " + self.file_name)
+            logger.info(f"File does not exist: {self.file_name}")
 
     def get(self, key, default=None):
         self._check_for_initial_load()
@@ -129,7 +129,7 @@ DEFAULT_CACHE_DIR = get_cache_dir()
 
 
 def get_cache(name, max_age=DEFAULT_MAX_AGE, cache_dir=DEFAULT_CACHE_DIR):
-    file_name = os.path.join(cache_dir, name + '.json')
+    file_name = os.path.join(cache_dir, f'{name}.json')
     return FileCache(file_name, max_age)
 
 
@@ -165,7 +165,7 @@ def read_file_content(file_path, allow_binary=False):
         except UnicodeError:
             pass
 
-    raise ValueError('Failed to decode file {} - unknown decoding'.format(file_path))
+    raise ValueError(f'Failed to decode file {file_path} - unknown decoding')
 
 
 def shell_safe_json_parse(json_or_dict_string, preserve_order=False):

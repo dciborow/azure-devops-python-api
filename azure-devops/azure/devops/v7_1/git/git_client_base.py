@@ -151,10 +151,7 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_blobs_zip(self, blob_ids, repository_id, project=None, filename=None, **kwargs):
@@ -182,10 +179,7 @@ class GitClientBase(Client):
                               query_parameters=query_parameters,
                               content=content,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_blob_zip(self, repository_id, sha1, project=None, download=None, file_name=None, resolve_lfs=None, **kwargs):
@@ -219,10 +213,7 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_branch(self, repository_id, name, project=None, base_version_descriptor=None):
@@ -906,10 +897,7 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_items(self, repository_id, project=None, scope_path=None, recursion_level=None, include_content_metadata=None, latest_processed_change=None, download=None, include_links=None, version_descriptor=None, zip_for_unix=None):
@@ -1015,10 +1003,7 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='text/plain')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_item_zip(self, repository_id, path, project=None, scope_path=None, recursion_level=None, include_content_metadata=None, latest_processed_change=None, download=None, version_descriptor=None, include_content=None, resolve_lfs=None, sanitize=None, **kwargs):
@@ -1075,10 +1060,7 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_items_batch(self, request_data, repository_id, project=None):
@@ -1240,10 +1222,7 @@ class GitClientBase(Client):
             route_values['repositoryId'] = self._serialize.url('repository_id', repository_id, 'str')
         if pull_request_id is not None:
             route_values['pullRequestId'] = self._serialize.url('pull_request_id', pull_request_id, 'int')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='965d9361-878b-413b-a494-45d5b5fd8ab7',
@@ -1298,10 +1277,7 @@ class GitClientBase(Client):
                               version='7.1-preview.1',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_attachments(self, repository_id, pull_request_id, project=None):
@@ -1348,10 +1324,7 @@ class GitClientBase(Client):
                               version='7.1-preview.1',
                               route_values=route_values,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def create_like(self, repository_id, pull_request_id, thread_id, comment_id, project=None):
@@ -3340,9 +3313,6 @@ class GitClientBase(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/zip')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 

@@ -87,10 +87,7 @@ class AuditClient(Client):
                               version='7.0-preview.1',
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def create_stream(self, stream, days_to_backfill):

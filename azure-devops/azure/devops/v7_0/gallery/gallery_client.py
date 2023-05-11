@@ -170,10 +170,7 @@ class GalleryClient(Client):
                               query_parameters=query_parameters,
                               additional_headers=additional_headers,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_asset(self, extension_id, version, asset_type, account_token=None, accept_default=None, account_token_header=None, **kwargs):
@@ -209,10 +206,7 @@ class GalleryClient(Client):
                               query_parameters=query_parameters,
                               additional_headers=additional_headers,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_asset_authenticated(self, publisher_name, extension_name, version, asset_type, account_token=None, account_token_header=None, **kwargs):
@@ -248,10 +242,7 @@ class GalleryClient(Client):
                               query_parameters=query_parameters,
                               additional_headers=additional_headers,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def associate_azure_publisher(self, publisher_name, azure_publisher_id):
@@ -417,10 +408,7 @@ class GalleryClient(Client):
                               version='7.0-preview.1',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_content_verification_log(self, publisher_name, extension_name, **kwargs):
@@ -440,10 +428,7 @@ class GalleryClient(Client):
                               version='7.0-preview.1',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def create_support_request(self, customer_support_request):
@@ -519,10 +504,7 @@ class GalleryClient(Client):
         additional_headers = {}
         if file_name is not None:
             additional_headers['X-Market-UploadFileName'] = file_name
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='02b33873-4e61-496e-83a2-59d1df46b7d8',
@@ -552,10 +534,7 @@ class GalleryClient(Client):
             route_values['draftId'] = self._serialize.url('draft_id', draft_id, 'str')
         if asset_type is not None:
             route_values['assetType'] = self._serialize.url('asset_type', asset_type, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='f1db9c47-6619-4998-a7e5-d7f9f41a4617',
@@ -582,10 +561,7 @@ class GalleryClient(Client):
             additional_headers['X-Market-UploadFileProduct'] = product
         if file_name is not None:
             additional_headers['X-Market-UploadFileName'] = file_name
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='b3ab127d-ebb9-4d22-b611-4e09593c8d79',
@@ -634,10 +610,7 @@ class GalleryClient(Client):
         additional_headers = {}
         if file_name is not None:
             additional_headers['X-Market-UploadFileName'] = file_name
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='b3ab127d-ebb9-4d22-b611-4e09593c8d79',
@@ -664,10 +637,7 @@ class GalleryClient(Client):
             route_values['draftId'] = self._serialize.url('draft_id', draft_id, 'str')
         if asset_type is not None:
             route_values['assetType'] = self._serialize.url('asset_type', asset_type, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='88c0b1c8-b4f1-498a-9b2a-8446ef9f32e7',
@@ -702,10 +672,7 @@ class GalleryClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_asset_from_new_extension_draft(self, publisher_name, draft_id, asset_type, **kwargs):
@@ -728,10 +695,7 @@ class GalleryClient(Client):
                               version='7.0-preview.1',
                               route_values=route_values,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_extension_events(self, publisher_name, extension_name, count=None, after_date=None, include=None, include_property=None):
@@ -813,10 +777,7 @@ class GalleryClient(Client):
             query_parameters['extensionType'] = self._serialize.query('extension_type', extension_type, 'str')
         if re_captcha_token is not None:
             query_parameters['reCaptchaToken'] = self._serialize.query('re_captcha_token', re_captcha_token, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='a41192c8-9525-4b58-bc86-179fa549d80d',
@@ -904,10 +865,7 @@ class GalleryClient(Client):
             query_parameters['extensionType'] = self._serialize.query('extension_type', extension_type, 'str')
         if re_captcha_token is not None:
             query_parameters['reCaptchaToken'] = self._serialize.query('re_captcha_token', re_captcha_token, 'str')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='POST',
                               location_id='e11ea35a-16fe-4b80-ab11-c4cab88a0966',
@@ -996,10 +954,7 @@ class GalleryClient(Client):
             query_parameters['reCaptchaToken'] = self._serialize.query('re_captcha_token', re_captcha_token, 'str')
         if bypass_scope_check is not None:
             query_parameters['bypassScopeCheck'] = self._serialize.query('bypass_scope_check', bypass_scope_check, 'bool')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='e11ea35a-16fe-4b80-ab11-c4cab88a0966',
@@ -1132,10 +1087,7 @@ class GalleryClient(Client):
                               query_parameters=query_parameters,
                               additional_headers=additional_headers,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def get_asset_with_token(self, publisher_name, extension_name, version, asset_type, asset_token=None, account_token=None, accept_default=None, account_token_header=None, **kwargs):
@@ -1177,10 +1129,7 @@ class GalleryClient(Client):
                               query_parameters=query_parameters,
                               additional_headers=additional_headers,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def delete_publisher_asset(self, publisher_name, asset_type=None):
@@ -1220,10 +1169,7 @@ class GalleryClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_publisher_asset(self, upload_stream, publisher_name, asset_type=None, file_name=None, **kwargs):
@@ -1244,10 +1190,7 @@ class GalleryClient(Client):
         additional_headers = {}
         if file_name is not None:
             additional_headers['X-Market-UploadFileName'] = file_name
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         content = self._client.stream_upload(upload_stream, callback=callback)
         response = self._send(http_method='PUT',
                               location_id='21143299-34f9-4c62-8ca8-53da691192f9',
@@ -1929,10 +1872,7 @@ class GalleryClient(Client):
                               route_values=route_values,
                               query_parameters=query_parameters,
                               accept_media_type='application/octet-stream')
-        if "callback" in kwargs:
-            callback = kwargs["callback"]
-        else:
-            callback = None
+        callback = kwargs.get("callback", None)
         return self._client.stream_download(response, callback=callback)
 
     def update_vSCode_web_extension_statistics(self, item_name, version, stat_type):
